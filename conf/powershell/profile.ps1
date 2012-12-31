@@ -5,8 +5,6 @@ $additionalPaths = @(
 	"C:\Program Files\Microsoft Visual Studio 8\Common7\Tools",
 	"C:\Windows\Microsoft.NET\Framework\v4.0.30319\",
 	"C:\Program Files (x86)\Git\bin",
-#	"C:\Program Files\Microsoft Visual Studio .NET 2003\Common7\IDE",
-#	"C:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools",
 	"C:\Program Files\TortoiseHG",
 	"C:\Program Files\Vim\vim73",
 	"C:\Python26\",
@@ -65,25 +63,18 @@ Write-host $env:HOME
 function TabExpansionEmacs 
 {
 	param( $line, $lastWord )
-    if( $lastWord -eq "" ) 
-	{
-        $lastWord = "*"
-    }
-
-    $expansion = $(TabExpansion -line $line -lastWord $lastWord)
-    if( $expansion -ne $Null )
-    {
-		return
-	}
 
     $currDir = Get-Location
     $currDir = $currDir.ToString() + "\"
     write-host ""
     write-host ""
     write-host ""
-	resolve-path -path ($lastWord + "*") |
-		foreach-object { 
-			Write-host $_.ToString().Replace($currDir, "")
-		}
+	$ret = $(resolve-path -path ($lastWord + "*"))
+	if ($ret -eq $NULL)
+	{
+		write-host $lastWord
+		return
+	}
+	$ret | foreach-object { Write-host $_.ToString().Replace($currDir, "")}
 }
 
