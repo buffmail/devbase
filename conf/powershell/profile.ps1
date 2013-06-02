@@ -56,6 +56,11 @@ cd $workbase
 Write-host "home dir : "
 Write-host $env:HOME
 
+function ls-changed($minute)
+{
+	ls *.h -R | where {$_.LastWriteTime -gt ((Get-Date).AddMinutes(-$minute))} | select DirectoryName, Name, LastWriteTime
+}
+
 # -------------------------------------------------------------------------
 # Function called by Emacs to do tab expansions that work just like the
 # built in tab expansion of powershell.exe in a console window.
