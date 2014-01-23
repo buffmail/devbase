@@ -16,7 +16,8 @@ $additionalPaths = @(
 	"D:\ThirdPartyProgs\ntemacs24\bin",
 	"C:\Program Files\ntemacs24\bin",
 	"D:\Scripts",
-	"D:\external\gitblit\"
+	"D:\external\gitblit\",
+	"D:\adt-bundle-windows-x86_64\sdk\platform-tools"
 )
 $workbase = "C:\Work\X3_340\Code"
 if ( $env:COMPUTERNAME -ne "XL0347-P1" )
