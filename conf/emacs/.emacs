@@ -1,6 +1,4 @@
-(add-to-list 'load-path "d:/Dropbox/conf/emacs/")
-(add-to-list 'load-path "d:/Dropbox/conf/emacs/git-emacs")
-(require 'git-emacs)
+(add-to-list 'load-path "d:/devbase/conf/emacs/")
 
 (autoload
   'powershell "powershell" "Start a interactive shell of PowerShell." t)
