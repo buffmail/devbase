@@ -81,6 +81,13 @@ function TabExpansionEmacs
 		write-host $lastWord
 		return
 	}
-	$ret | foreach-object { Write-host $_.ToString().Replace($currDir, "")}
+	$ret | foreach-object {
+		$entry = $_.ToString()
+		if (Test-Path $_ -pathtype container)
+		{
+			$entry += '\'
+		}
+		Write-host $entry.Replace($currDir, "")
+	}
 }
 
