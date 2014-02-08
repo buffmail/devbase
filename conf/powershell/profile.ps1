@@ -17,7 +17,8 @@ $additionalPaths = @(
 	"C:\Program Files\ntemacs24\bin",
 	"D:\Scripts",
 	"D:\external\gitblit\",
-	"D:\adt-bundle-windows-x86_64\sdk\platform-tools"
+	"D:\adt-bundle-windows-x86_64\sdk\platform-tools",
+	"D:\Programs\JRE\bin"
 )
 $workbase = "C:\Work\X3_340\Code"
 if ( $env:COMPUTERNAME -ne "XL0347-P1" )
@@ -66,7 +67,7 @@ function ls-changed($minute)
 # Function called by Emacs to do tab expansions that work just like the
 # built in tab expansion of powershell.exe in a console window.
 # -------------------------------------------------------------------------
-function TabExpansionEmacs 
+function TabExpansionEmacs
 {
 	param( $line, $lastWord )
 
