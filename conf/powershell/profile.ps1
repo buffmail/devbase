@@ -18,7 +18,8 @@ $additionalPaths = @(
 	"D:\Scripts",
 	"D:\external\gitblit\",
 	"D:\adt-bundle-windows-x86_64\sdk\platform-tools",
-	"D:\Programs\JRE\bin"
+	"D:\Programs\JRE\bin",
+	"D:\Programs\nodejs"
 )
 $workbase = "C:\Work\X3_340\Code"
 if ( $env:COMPUTERNAME -ne "XL0347-P1" )
