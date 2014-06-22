@@ -47,4 +47,9 @@
 
 (when (not (display-graphic-p))
   (global-hl-line-mode)
-  (set-face-background hl-line-face "gray13"))
+  (set-face-background hl-line-face "gray13")
+  (require 'color-theme)
+  (eval-after-load "color-theme"
+	'(progn
+	   (color-theme-initialize)
+	   (color-theme-charcoal-black))))
