@@ -44,3 +44,8 @@
 (put 'downcase-region 'disabled nil)
 
 (setq backup-inhibited t)
+(global-linum-mode 1)
+
+(when (not (display-graphic-p))
+  (global-hl-line-mode)
+  (set-face-background hl-line-face "gray13"))
