@@ -21,7 +21,6 @@
 (server-start)
 (remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-function)
 (set-background-color "cornsilk")
-(linum-mode)
 
 (defun newps ()
   (interactive)
