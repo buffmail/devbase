@@ -62,8 +62,8 @@
  )
 
 (when 
-	(string= (getenv "COMPUTERNAME") "XL0347-P1") 
-  (dired "C:/Work/X3_340/Game/db")
+	(string= (getenv "COMPUTERNAME") "XL0347-P5") 
+  (dired "C:/Work/X3/Game/db")
   (newps)
   (split-window)
   (newps))

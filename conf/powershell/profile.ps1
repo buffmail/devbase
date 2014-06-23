@@ -1,28 +1,14 @@
 $additionalPaths = @(
 	".",
-	"C:\Program Files\Microsoft Visual Studio 8\Common7\IDE",
 	"C:\Program files\Subversion\bin",
-	"C:\Program Files\Microsoft Visual Studio 8\Common7\Tools",
-	"C:\Windows\Microsoft.NET\Framework\v4.0.30319\",
-	"C:\Program Files (x86)\Git\bin",
-	"C:\Program Files\TortoiseHG",
-	"C:\Program Files\Vim\vim73",
-	"C:\Python26\",
-	"C:\Python32\",
-	"C:\Program Files\Subversion\bin",
-	"D:\ThirdPartyProgs\bin",
-	"D:\ThirdPartyProgs\UnxUtils\usr\local\wbin",
-	"D:\ThirdPartyProgs\UnxUtils\bin",
-	"D:\ThirdPartyProgs\ntemacs24\bin",
-	"C:\Program Files\ntemacs24\bin",
-	"D:\Scripts",
-	"D:\external\gitblit\",
-	"D:\adt-bundle-windows-x86_64\sdk\platform-tools",
-	"D:\Programs\JRE\bin",
-	"D:\Programs\nodejs"
+	"C:\Programs\Vim\vim73",
+	"C:\Programs\Python27\",
+	"C:\Programs\ntemacs24\bin",
+    "C:\Program Files (x86)\MSBUILD\12.0\Bin"
+	"D:\Work\Scripts"
 )
-$workbase = "C:\Work\X3_340\Code"
-if ( $env:COMPUTERNAME -ne "XL0347-P1" )
+$workbase = "C:\Work\X3\Code"
+if ( $env:COMPUTERNAME -ne "XL0347-P5" )
 {
 	$workbase = "D:/"
 }
