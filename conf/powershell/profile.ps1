@@ -5,6 +5,7 @@ $additionalPaths = @(
 	"C:\Programs\Python27\",
 	"C:\Programs\ntemacs24\bin",
     "C:\Program Files (x86)\MSBUILD\12.0\Bin"
+    "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\"
 	"D:\Work\Scripts"
 )
 $workbase = "C:\Work\X3\Code"
