@@ -40,6 +40,12 @@ function cd
 }
 Get-Item function:cd
 
+function gitlog
+{
+	git log -n 10 --oneline
+	Write-host ''
+}
+
 Set-Variable SVN_EDITOR gvim.exe
 cd $workbase
 
@@ -80,3 +86,19 @@ function TabExpansionEmacs
 	}
 }
 
+function p 
+{ 
+	$argList = [System.Collections.ArrayList]$args
+	if ($argList.Count -eq 0){
+		echo "Argument is null"
+		return
+	}
+
+	if (-Not (Test-Path($argList[0]))){
+		$argList[0] = 'D:/Work/Scripts/' + $argList[0]
+	}
+
+	$cmdLine = 'python ' + ($argList -Join ' ')
+	echo $cmdLine
+	Invoke-Expression -command $cmdLine
+}
