@@ -1,4 +1,17 @@
-(add-to-list 'load-path "c:/devbase/conf/emacs/")
+(let ((pcname (getenv "COMPUTERNAME")))
+  (cond
+   ((string= pcname "BUFFNOTE")
+	(setq my_devbase "c:/devbase/")
+	(setq my_bash "C:/Program Files (x86)/Git/bin/sh.exe"))
+   ((strig= pcname "XL0347-P5")
+	(setq my_devbase "d:/devbase/")
+	(setq my_bash "C:/Program Files (x86)/Git/bin/sh.exe")
+	(dired "C:/Work/X3/Game/db"))
+   ((strig= pcname "BUFFMAIL-PC")
+	(setq my_devbase "d:/devbase/")
+	(setq my_bash "D:/Programs/Git/bin/sh.exe"))))
+
+(add-to-list 'load-path (concat my_devbase "conf/emacs/"))
 
 (setq auto-mode-alist (cons '("\\.lua$" . lua-mode) auto-mode-alist))
 (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
@@ -42,11 +55,6 @@
  ;; If there is more than one, they won't work right.
  )
 
-(when 
-	(string= (getenv "COMPUTERNAME") "XL0347-P5") 
-  (dired "C:/Work/X3/Game/db")
-  (split-window))
-
 (when (not (display-graphic-p))
   (global-hl-line-mode)
   (set-face-background hl-line-face "gray13")
@@ -57,10 +65,11 @@
 	   (color-theme-charcoal-black))))
 
 (if (equal system-type 'windows-nt)
-    (progn (setq explicit-shell-file-name
-                 "C:/Program Files (x86)/Git/bin/sh.exe")
+    (progn (setq explicit-shell-file-name my_bash)
            (setq shell-file-name "bash")
            (setq explicit-sh.exe-args '("--login" "-i"))
            (setenv "SHELL" shell-file-name)
            (add-hook 'comint-output-filter-functions
 					 'comint-strip-ctrl-m)))
+
+(split-window)
