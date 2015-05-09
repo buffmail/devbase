@@ -55,3 +55,12 @@
 	'(progn
 	   (color-theme-initialize)
 	   (color-theme-charcoal-black))))
+
+(if (equal system-type 'windows-nt)
+    (progn (setq explicit-shell-file-name
+                 "C:/Program Files (x86)/Git/bin/sh.exe")
+           (setq shell-file-name "bash")
+           (setq explicit-sh.exe-args '("--login" "-i"))
+           (setenv "SHELL" shell-file-name)
+           (add-hook 'comint-output-filter-functions
+					 'comint-strip-ctrl-m)))
