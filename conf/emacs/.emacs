@@ -6,7 +6,7 @@
 	(setq my_workdir "c:/work"))
    ((string= pcname "XL0347-P5")
 	(setq my_devbase "d:/devbase/")
-	(setq my_bash "C:/Program Files (x86)/Git/bin/sh.exe")
+	(setq my_bash "D:/Programs/Git/bin/sh.exe")
 	(dired "C:/Work/X3/Game/db")
 	(setq my_workdir "c:/work"))
    ((string= pcname "BUFFMAIL-PC")
@@ -29,11 +29,6 @@
 (setq default-tab-width 4)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
-
-(defun clear-shell ()
-  (interactive)
-  (let ((comint-buffer-maximum-size 0))
-	(comint-truncate-buffer)))
 
 (modify-coding-system-alist 'file "\\COMMIT_EDITMSG\\'" 'utf-8)
 (put 'upcase-region 'disabled nil)
@@ -75,5 +70,19 @@
            (add-hook 'comint-output-filter-functions
 					 'comint-strip-ctrl-m)))
 
+(require 'whitespace)
+(setq whitespace-line-column 80) ;; limit line length
+(setq whitespace-style '(face lines-tail))
+
+(add-hook 'prog-mode-hook 'whitespace-mode)
+
+(global-set-key (kbd "S-C-<up>") 'enlarge-window)
+(global-set-key (kbd "S-C-<down>") 'shrink-window)
+
 (split-window)
 (cd my_workdir)
+
+(setenv "PATH"
+		(concat
+		 "d:/Programs/ntemacs24/bin;"
+		 (getenv "PATH")))
