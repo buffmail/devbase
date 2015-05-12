@@ -1,3 +1,7 @@
+(require 'package)
+(require 'org)
+(require 'whitespace)
+
 (let ((pcname (getenv "COMPUTERNAME")))
   (cond
    ((string= pcname "BUFFNOTE")
@@ -15,10 +19,6 @@
 	(setq my_workdir "d:/workspace"))))
 
 (add-to-list 'load-path (concat my_devbase "conf/emacs/"))
-
-(setq auto-mode-alist (cons '("\\.lua$" . lua-mode) auto-mode-alist))
-(autoload 'lua-mode "lua-mode" "Lua editing mode." t)
-(add-hook 'lua-mode-hook 'turn-on-font-lock)
 
 (add-hook 'emacs-lisp-mode-hook (lambda () (show-paren-mode t)))
 
@@ -70,7 +70,7 @@
            (add-hook 'comint-output-filter-functions
 					 'comint-strip-ctrl-m)))
 
-(require 'whitespace)
+
 (setq whitespace-line-column 80) ;; limit line length
 (setq whitespace-style '(face lines-tail))
 
@@ -87,7 +87,6 @@
 		 "d:/Programs/ntemacs24/bin;"
 		 (getenv "PATH")))
 
-(require 'package)
 (add-to-list
  'package-archives
  '("melpa" . "http://melpa.org/packages/")
