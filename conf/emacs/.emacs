@@ -68,7 +68,9 @@
            (setq explicit-sh.exe-args '("--login" "-i"))
            (setenv "SHELL" shell-file-name)
            (add-hook 'comint-output-filter-functions
-					 'comint-strip-ctrl-m)))
+					 'comint-strip-ctrl-m))
+		   ; unset shift-space (using windows ime)
+           (global-unset-key (kbd "S-SPC")))
 
 
 (setq whitespace-line-column 80) ;; limit line length
@@ -92,3 +94,4 @@
  '("melpa" . "http://melpa.org/packages/")
  t)
 (package-initialize)
+
