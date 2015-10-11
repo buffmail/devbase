@@ -87,6 +87,10 @@
 (setenv "PATH"
 		(concat
 		 "d:/Programs/ntemacs24/bin;"
+		 "C:/Program Files (x86)/ntemacs/bin;"
+		 "C:/Program Files/Java/jdk1.8.0_45/bin;"
+		 "C:/Python34;"
+		 "C:/Python34/Scripts;"
 		 (getenv "PATH")))
 
 (add-to-list
@@ -95,3 +99,5 @@
  t)
 (package-initialize)
 
+(prefer-coding-system 'utf-8)
+(setq-default show-trailing-whitespace t)
