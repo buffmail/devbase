@@ -10,7 +10,7 @@
 	(setq my_workdir "c:/work"))
    ((string= pcname "XL0347-P5")
 	(setq my_devbase "d:/devbase/")
-	(setq my_bash "D:/Programs/Git/bin/sh.exe")
+	(setq my_bash "C:/Program Files (x86)/Git/bin/sh.exe")
 	(dired "C:/Work/X3/Game/db")
 	(setq my_workdir "c:/work"))
    ((string= pcname "BUFFMAIL-PC")
