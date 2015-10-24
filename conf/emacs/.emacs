@@ -22,7 +22,12 @@
 
 (add-hook 'emacs-lisp-mode-hook (lambda () (show-paren-mode t)))
 
-(server-start)
+(add-hook 'after-init-hook
+		  (lambda ()
+			(require 'server)
+			(unless (server-running-p)
+			  (server-start))))
+
 (remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-function)
 (set-background-color "cornsilk")
 
