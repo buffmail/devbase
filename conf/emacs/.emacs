@@ -6,7 +6,8 @@
   (cond
    ((string= pcname "BUFFNOTE")
 	(setq my_devbase "c:/devbase/")
-	(setq my_bash "C:/Program Files (x86)/Git/bin/sh.exe")
+;	(setq my_bash "C:/Program Files (x86)/Git/bin/sh.exe")
+	(setq my_bash "C:/msys64/usr/bin/_bash.exe")
 	(setq my_workdir "c:/work"))
    ((string= pcname "XL0347-P5")
 	(setq my_devbase "d:/devbase/")

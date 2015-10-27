@@ -9,3 +9,4 @@ set enc=utf8
 set fenc=utf8
 set fencs=utf8,default
 syn on
+set gfn=±¼¸²Ã¼:h12:cHANGEUL
