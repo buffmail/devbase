@@ -29,8 +29,8 @@
 			(unless (server-running-p)
 			  (server-start))))
 
-(remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-function)
-(set-background-color "cornsilk")
+(remove-hook 'kill-buffer-query-functions
+			 'server-kill-buffer-query-function)
 
 (setq default-tab-width 4)
 (menu-bar-mode -1)
@@ -48,6 +48,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
+ '(custom-enabled-themes (quote (tsdh-dark)))
  '(ls-lisp-dirs-first t)
  '(ls-lisp-format-time-list (quote ("" "")))
  '(ls-lisp-use-localized-time-format t)
