@@ -4,9 +4,11 @@ behave mswin
 
 set nobk
 set sw=4
-set ts=4
+set ts=8
 set enc=utf8
 set fenc=utf8
 set fencs=utf8,default
 syn on
 set gfn=±¼¸²Ã¼:h12:cHANGEUL
+set cursorline
+set nu
