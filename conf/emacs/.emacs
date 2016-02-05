@@ -72,14 +72,13 @@
 
 (defun my-current-directory (text)
   (if (string-match
-       "\n\\[34m/\\([[:alpha:]*]\\)\\(.+\\)\\[31m.*\n\$ " text)
-      (progn
-        (setq windir
-              (concat
-               (substring text (match-beginning 1)(match-end 1))
-               ":"
-               (substring text (match-beginning 2)(match-end 2))))
-        (message windir)
+       "\n\\[34m/\\([[:alpha:]*]\\)\\(.*\\)\\[31m.*\n\$ " text)
+      (let
+          ((windir
+            (concat
+             (substring text (match-beginning 1)(match-end 1))
+             ":"
+             (substring text (match-beginning 2)(match-end 2)))))
         (cd windir))))
 
 (if (equal system-type 'windows-nt)
@@ -122,6 +121,7 @@
 (package-initialize)
 
 (prefer-coding-system 'utf-8)
-(setq whitespace-style (quote (face spaces tabs trailing tab-mark space-mark)))
-(setq indent-tabs-mode nil)
+(setq whitespace-style
+      (quote (face spaces tabs trailing tab-mark space-mark)))
+(setq-default indent-tabs-mode nil)
 
