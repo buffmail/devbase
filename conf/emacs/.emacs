@@ -70,16 +70,29 @@
        (color-theme-initialize)
        (color-theme-charcoal-black))))
 
+(defun my-current-directory (text)
+  (if (string-match
+       "\n\\[34m/\\([[:alpha:]*]\\)\\(.+\\)\\[31m.*\n\$ " text)
+      (progn
+        (setq windir
+              (concat
+               (substring text (match-beginning 1)(match-end 1))
+               ":"
+               (substring text (match-beginning 2)(match-end 2))))
+        (message windir)
+        (cd windir))))
+
 (if (equal system-type 'windows-nt)
     (progn (setq explicit-shell-file-name my_bash)
            (setq shell-file-name "bash")
            (setq explicit-sh.exe-args '("--login" "-i"))
            (setenv "SHELL" shell-file-name)
            (add-hook 'comint-output-filter-functions
-                     'comint-strip-ctrl-m))
+                     'comint-strip-ctrl-m)
+           (add-hook 'comint-output-filter-functions
+                     'my-current-directory))
            ; unset shift-space (using windows ime)
            (global-unset-key (kbd "S-SPC")))
-
 
 (setq whitespace-line-column 80) ;; limit line length
 
@@ -110,4 +123,5 @@
 
 (prefer-coding-system 'utf-8)
 (setq whitespace-style (quote (face spaces tabs trailing tab-mark space-mark)))
+(setq indent-tabs-mode nil)
 
