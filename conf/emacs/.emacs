@@ -107,11 +107,10 @@
         (concat
          "d:/Programs/ntemacs24/bin;"
          "C:/Program Files/Java/jdk1.8.0_45/bin;"
-         "C:/Python34;"
-         "C:/Python34/Scripts;"
          "C:/MSys64/usr/bin;"
          "C:/Program Files (x86)/MSBuild/14.0/Bin;"
          "C:/Program Files/Git/cmd/;"
+         "C:/Program Files/emacs/bin/;"
          (getenv "PATH")))
 
 (add-to-list
