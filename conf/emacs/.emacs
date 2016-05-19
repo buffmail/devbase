@@ -41,6 +41,7 @@
 
 (setq backup-inhibited t)
 (global-linum-mode 1)
+(global-whitespace-mode 1)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -53,7 +54,8 @@
  '(ls-lisp-dirs-first t)
  '(ls-lisp-format-time-list (quote ("" "")))
  '(ls-lisp-use-localized-time-format t)
- '(ls-lisp-verbosity nil))
+ '(ls-lisp-verbosity nil)
+ '(package-selected-packages (quote (jade-mode sws-mode multi-web-mode web-mode org))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -118,6 +120,9 @@
  '("melpa" . "http://melpa.org/packages/")
  t)
 (package-initialize)
+
+(add-to-list
+ 'auto-mode-alist '("\\.pug\\'" . jade-mode))
 
 (prefer-coding-system 'utf-8)
 (setq whitespace-style
