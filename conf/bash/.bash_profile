@@ -14,5 +14,6 @@ PS1="$PS1"'$ '                 # prompt: always $
 
 
 alias ls='ls --color'
+alias pym='python -m'
 export PATH=$PATH:/mingw64/bin/
 export GIT_GUI_LIB_DIR=/c/msys64/usr/share/git-gui/lib
