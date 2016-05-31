@@ -10,7 +10,7 @@
    ((string= pcname "XL0347-P5")
     (setq my_devbase "d:/devbase/")
     (setq my_bash "C:/msys64/usr/bin/f_bash.exe")
-    (setq my_workdir "c:/work/"))
+    (setq my_workdir "e:/work/"))
    ((string= pcname "BUFFMAIL-PC")
     (setq my_devbase "d:/devbase/")
     (setq my_bash "D:/Programs/Git/bin/sh.exe")
@@ -25,6 +25,8 @@
             (require 'server)
             (unless (server-running-p)
               (server-start))))
+
+(add-hook 'prog-mode-hook 'whitespace-mode)
 
 (remove-hook 'kill-buffer-query-functions
              'server-kill-buffer-query-function)
@@ -94,8 +96,6 @@
            (global-unset-key (kbd "S-SPC")))
 
 (setq whitespace-line-column 80) ;; limit line length
-
-(add-hook 'prog-mode-hook 'whitespace-mode)
 
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
