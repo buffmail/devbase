@@ -1,5 +1,4 @@
 (require 'package)
-(require 'org)
 (require 'whitespace)
 
 (let ((pcname (getenv "COMPUTERNAME")))
@@ -7,16 +6,15 @@
    ((string= pcname "BUFFNOTE")
     (setq my_devbase "c:/devbase/")
     (setq my_bash "C:/msys64/usr/bin/f_bash.exe")
-    (setq my_workdir "c:/work"))
+    (setq my_workdir "c:/work/"))
    ((string= pcname "XL0347-P5")
     (setq my_devbase "d:/devbase/")
     (setq my_bash "C:/msys64/usr/bin/f_bash.exe")
-    (dired "C:/Work/X3/Game/db")
-    (setq my_workdir "c:/work"))
+    (setq my_workdir "c:/work/"))
    ((string= pcname "BUFFMAIL-PC")
     (setq my_devbase "d:/devbase/")
     (setq my_bash "D:/Programs/Git/bin/sh.exe")
-    (setq my_workdir "d:/workspace"))))
+    (setq my_workdir "d:/workspace/"))))
 
 (add-to-list 'load-path (concat my_devbase "conf/emacs/"))
 
@@ -103,7 +101,6 @@
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
 
 (split-window)
-(cd my_workdir)
 
 (setenv "PATH"
         (concat
@@ -114,6 +111,8 @@
          "C:/Program Files/Git/cmd/;"
          "C:/Program Files/emacs/bin/;"
          (getenv "PATH")))
+
+(setenv "my_workdir" my_workdir)
 
 (add-to-list
  'package-archives
@@ -128,4 +127,3 @@
 (setq whitespace-style
       (quote (face spaces tabs trailing tab-mark space-mark)))
 (setq-default indent-tabs-mode nil)
-
