@@ -55,7 +55,9 @@
  '(ls-lisp-format-time-list (quote ("" "")))
  '(ls-lisp-use-localized-time-format t)
  '(ls-lisp-verbosity nil)
- '(package-selected-packages (quote (jade-mode sws-mode multi-web-mode web-mode org))))
+ '(package-selected-packages
+   (quote
+    (tabbar-ruler tabbar jade-mode sws-mode multi-web-mode web-mode org))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -127,3 +129,9 @@
 (setq whitespace-style
       (quote (face spaces tabs trailing tab-mark space-mark)))
 (setq-default indent-tabs-mode nil)
+
+(setq tabbar-ruler-global-tabbar t)
+(tabbar-ruler-move)
+(tabbar-ruler-group-by-projectile-project)
+(global-set-key [(control tab)] 'tabbar-forward-tab)
+(global-set-key [(control shift tab)] 'tabbar-backward-tab)
