@@ -1,5 +1,7 @@
 (require 'package)
 (require 'whitespace)
+(require 'org)
+(require 'fill-column-indicator)
 
 (let ((pcname (getenv "COMPUTERNAME")))
   (cond
@@ -57,7 +59,7 @@
  '(ls-lisp-verbosity nil)
  '(package-selected-packages
    (quote
-    (tabbar-ruler tabbar jade-mode sws-mode multi-web-mode web-mode org))))
+    (fill-column-indicator tabbar-ruler tabbar jade-mode sws-mode multi-web-mode web-mode org))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -135,3 +137,13 @@
 (tabbar-ruler-group-by-projectile-project)
 (global-set-key [(control tab)] 'tabbar-forward-tab)
 (global-set-key [(control shift tab)] 'tabbar-backward-tab)
+
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
+(setq org-agenda-files
+      (list "~/Dropbox/Documents/org/2016.org"))
+
+(define-globalized-minor-mode global-fci-mode
+  fci-mode (lambda () (fci-mode 1)))
+(global-fci-mode 1)
