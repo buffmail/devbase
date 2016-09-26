@@ -9,9 +9,9 @@
     (setq my_devbase "c:/devbase/")
     (setq my_bash "C:/msys64/usr/bin/f_bash.exe")
     (setq my_workdir "c:/work/"))
-   ((string= pcname "XL0347-P5")
+   ((string= pcname "XL0347-P1")
     (setq my_devbase "d:/devbase/")
-    (setq my_bash "C:/msys64/usr/bin/f_bash.exe")
+    (setq my_bash "c:/msys64/usr/bin/f_bash.exe")
     (setq my_workdir "e:/work/"))
    ((string= pcname "BUFFMAIL-PC")
     (setq my_devbase "d:/devbase/")
@@ -110,7 +110,7 @@
         (concat
          "d:/Programs/ntemacs24/bin;"
          "C:/Program Files/Java/jdk1.8.0_45/bin;"
-         "C:/MSys64/usr/bin;"
+         "c:/MSys64/usr/bin;"
          "C:/Program Files (x86)/MSBuild/14.0/Bin;"
          "C:/Program Files/Git/cmd/;"
          "C:/Program Files/emacs/bin/;"
