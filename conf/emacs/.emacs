@@ -143,6 +143,8 @@
 (setq org-log-done t)
 (setq org-agenda-files
       (list "~/Dropbox/Documents/org/2016.org"))
+(define-key org-mode-map [(control tab)] nil)
+(define-key org-mode-map [(control shift tab)] nil)
 
 (define-globalized-minor-mode global-fci-mode
   fci-mode (lambda () (fci-mode 1)))
