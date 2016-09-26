@@ -2,6 +2,7 @@
 (require 'whitespace)
 (require 'org)
 (require 'fill-column-indicator)
+(require 'helm)
 
 (let ((pcname (getenv "COMPUTERNAME")))
   (cond
@@ -59,7 +60,7 @@
  '(ls-lisp-verbosity nil)
  '(package-selected-packages
    (quote
-    (fill-column-indicator tabbar-ruler tabbar jade-mode sws-mode multi-web-mode web-mode org))))
+    (helm fill-column-indicator tabbar-ruler tabbar jade-mode sws-mode multi-web-mode web-mode org))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -149,3 +150,5 @@
 (define-globalized-minor-mode global-fci-mode
   fci-mode (lambda () (fci-mode 1)))
 (global-fci-mode 1)
+
+(global-set-key (kbd "M-x") #'helm-M-x)
