@@ -143,7 +143,8 @@
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
 (setq org-agenda-files
-      (list "~/Dropbox/Documents/org/2016.org"))
+      (list "~/Dropbox/Documents/org/2016.org"
+            "~/Dropbox/Documents/org/work.org"))
 (define-key org-mode-map [(control tab)] nil)
 (define-key org-mode-map [(control shift tab)] nil)
 
