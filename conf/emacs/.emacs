@@ -1,8 +1,7 @@
 (require 'package)
 (require 'whitespace)
 (require 'org)
-(require 'fill-column-indicator)
-(require 'helm)
+(require 'evil')
 
 (let ((pcname (getenv "COMPUTERNAME")))
   (cond
@@ -153,3 +152,5 @@
 (global-fci-mode 1)
 
 (global-set-key (kbd "M-x") #'helm-M-x)
+
+(evil-mode 1)
