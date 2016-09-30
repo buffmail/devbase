@@ -1,7 +1,5 @@
 (require 'package)
 (require 'whitespace)
-(require 'org)
-(require 'evil')
 
 (let ((pcname (getenv "COMPUTERNAME")))
   (cond
@@ -138,6 +136,7 @@
 (global-set-key [(control tab)] 'tabbar-forward-tab)
 (global-set-key [(control shift tab)] 'tabbar-backward-tab)
 
+(require 'org)
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
@@ -152,5 +151,10 @@
 (global-fci-mode 1)
 
 (global-set-key (kbd "M-x") #'helm-M-x)
+(global-set-key (kbd "C-x C-f") #'helm-find-files)
+(global-set-key (kbd "C-x b") #'helm-buffers-list)
 
+(global-hl-line-mode)
+
+(require 'evil)
 (evil-mode 1)
