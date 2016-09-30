@@ -41,7 +41,6 @@
 
 (setq backup-inhibited t)
 (global-linum-mode 1)
-(global-whitespace-mode 1)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
