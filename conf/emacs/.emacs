@@ -105,12 +105,10 @@
 
 (setenv "PATH"
         (concat
-         "d:/Programs/ntemacs24/bin;"
          "C:/Program Files/Java/jdk1.8.0_45/bin;"
          "c:/MSys64/usr/bin;"
          "C:/Program Files (x86)/MSBuild/14.0/Bin;"
          "C:/Program Files/Git/cmd/;"
-         "C:/Program Files/emacs/bin/;"
          (getenv "PATH")))
 
 (setenv "my_workdir" my_workdir)
@@ -125,6 +123,7 @@
  'auto-mode-alist '("\\.pug\\'" . jade-mode))
 
 (prefer-coding-system 'utf-8)
+
 (setq whitespace-style
       (quote (face spaces tabs trailing tab-mark space-mark)))
 (setq-default indent-tabs-mode nil)
@@ -140,8 +139,8 @@
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
 (setq org-agenda-files
-      (list "~/Dropbox/Documents/org/2016.org"
-            "~/Dropbox/Documents/org/work.org"))
+      (list "~/org/life-2016.org"
+            "~/org/work.org"))
 (define-key org-mode-map [(control tab)] nil)
 (define-key org-mode-map [(control shift tab)] nil)
 
