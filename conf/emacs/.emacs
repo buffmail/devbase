@@ -156,3 +156,10 @@
 
 (require 'evil)
 (evil-mode 1)
+
+(defun redmine-open ()
+  (interactive)
+  (let
+      ((url (concat "http://redmine/issues/" (thing-at-point 'word))))
+    (message url)
+    (browse-url url)))
