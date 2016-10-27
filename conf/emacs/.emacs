@@ -144,6 +144,7 @@
 (define-key org-mode-map [(control tab)] nil)
 (define-key org-mode-map [(control shift tab)] nil)
 
+(setq-default fci-rule-column 80)
 (define-globalized-minor-mode global-fci-mode
   fci-mode (lambda () (fci-mode 1)))
 (global-fci-mode 1)
@@ -159,7 +160,11 @@
 
 (defun redmine-open ()
   (interactive)
-  (let
-      ((url (concat "http://redmine/issues/" (thing-at-point 'word))))
+  (let*
+      ((issueNumber (thing-at-point 'word))
+       (prefixUrl (if (< (string-to-number issueNumber) 200000)
+                      "http://redmine/issues/"
+                    "http://x3redmine/issues/"))
+       (url (concat prefixUrl issueNumber)))
     (message url)
     (browse-url url)))
