@@ -143,6 +143,7 @@
             "~/org/work.org"))
 (define-key org-mode-map [(control tab)] nil)
 (define-key org-mode-map [(control shift tab)] nil)
+(add-hook 'org-mode-hook (lambda () (visual-line-mode t)))
 
 (setq-default fci-rule-column 80)
 (define-globalized-minor-mode global-fci-mode
