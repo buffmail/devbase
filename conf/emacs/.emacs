@@ -1,11 +1,14 @@
 (require 'package)
 (require 'whitespace)
 
+(setq my_console_width 80)
+
 (let ((pcname (getenv "COMPUTERNAME")))
   (cond
    ((string= pcname "BUFFNOTE")
     (setq my_devbase "c:/devbase/")
     (setq my_bash "C:/msys64/usr/bin/f_bash.exe")
+    (setq my_console_width 70)
     (setq my_workdir "c:/work/"))
    ((string= pcname "XL0347-P1")
     (setq my_devbase "d:/devbase/")
@@ -54,6 +57,7 @@
  '(ls-lisp-format-time-list (quote ("" "")))
  '(ls-lisp-use-localized-time-format t)
  '(ls-lisp-verbosity nil)
+ '(org-agenda-files nil)
  '(package-selected-packages
    (quote
     (helm fill-column-indicator tabbar-ruler tabbar jade-mode sws-mode multi-web-mode web-mode org))))
@@ -138,14 +142,11 @@
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
-(setq org-agenda-files
-      (list "~/org/life-2016.org"
-            "~/org/work.org"))
 (define-key org-mode-map [(control tab)] nil)
 (define-key org-mode-map [(control shift tab)] nil)
 (add-hook 'org-mode-hook (lambda () (visual-line-mode t)))
 
-(setq-default fci-rule-column 80)
+(setq-default fci-rule-column my_console_width)
 (define-globalized-minor-mode global-fci-mode
   fci-mode (lambda () (fci-mode 1)))
 (global-fci-mode 1)
