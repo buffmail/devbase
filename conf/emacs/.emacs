@@ -1,8 +1,17 @@
 (require 'package)
+
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+(package-initialize)
+
+(require 'evil)
+(require 'fill-column-indicator)
+(require 'helm)
+(require 'org)
+(require 'server)
 (require 'whitespace)
 
 (setq my_console_width 80)
-
 (let ((pcname (getenv "COMPUTERNAME")))
   (cond
    ((string= pcname "BUFFNOTE")
@@ -21,15 +30,18 @@
 
 (add-to-list 'load-path (concat my_devbase "conf/emacs/"))
 
-(add-hook 'emacs-lisp-mode-hook (lambda () (show-paren-mode t)))
+(require 'org-fold)
+
+(add-hook 'emacs-lisp-mode-hook
+          (lambda () (show-paren-mode t)))
 
 (add-hook 'after-init-hook
           (lambda ()
-            (require 'server)
             (unless (server-running-p)
               (server-start))))
 
-(add-hook 'prog-mode-hook 'whitespace-mode)
+(add-hook 'prog-mode-hook
+          'whitespace-mode)
 
 (remove-hook 'kill-buffer-query-functions
              'server-kill-buffer-query-function)
@@ -117,14 +129,8 @@
 
 (setenv "my_workdir" my_workdir)
 
-(add-to-list
- 'package-archives
- '("melpa" . "http://melpa.org/packages/")
- t)
-(package-initialize)
-
-(add-to-list
- 'auto-mode-alist '("\\.pug\\'" . jade-mode))
+(add-to-list 'auto-mode-alist
+             '("\\.pug\\'" . jade-mode))
 
 (prefer-coding-system 'utf-8)
 
@@ -138,7 +144,6 @@
 (global-set-key [(control tab)] 'tabbar-forward-tab)
 (global-set-key [(control shift tab)] 'tabbar-backward-tab)
 
-(require 'org)
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
@@ -157,16 +162,4 @@
 
 (global-hl-line-mode)
 
-(require 'evil)
 (evil-mode 1)
-
-(defun redmine-open ()
-  (interactive)
-  (let*
-      ((issueNumber (thing-at-point 'word))
-       (prefixUrl (if (< (string-to-number issueNumber) 200000)
-                      "http://redmine/issues/"
-                    "http://x3redmine/issues/"))
-       (url (concat prefixUrl issueNumber)))
-    (message url)
-    (browse-url url)))
