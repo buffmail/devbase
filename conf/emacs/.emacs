@@ -163,3 +163,10 @@
 (global-hl-line-mode)
 
 (evil-mode 1)
+
+(global-set-key [(kana)] 'toggle-input-method)
+(global-set-key [(kanji)] 'hangul-to-hanja-conversion)
+
+(let ((dife (expand-file-name "~/.emacs.d/=.dife/DIFE.exe")))
+  (if (file-exists-p dife)
+      (w32-shell-execute nil dife)))
