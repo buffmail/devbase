@@ -11,13 +11,11 @@
 (require 'server)
 (require 'whitespace)
 
-(setq my_console_width 80)
 (let ((pcname (getenv "COMPUTERNAME")))
   (cond
    ((string= pcname "BUFFNOTE")
     (setq my_devbase "c:/devbase/")
     (setq my_bash "C:/msys64/usr/bin/f_bash.exe")
-    (setq my_console_width 70)
     (setq my_workdir "c:/work/"))
    ((string= pcname "XL0347-P1")
     (setq my_devbase "d:/devbase/")
@@ -72,7 +70,7 @@
  '(org-agenda-files nil)
  '(package-selected-packages
    (quote
-    (helm fill-column-indicator tabbar-ruler tabbar jade-mode sws-mode multi-web-mode web-mode org))))
+    (evil helm fill-column-indicator tabbar-ruler tabbar jade-mode sws-mode multi-web-mode web-mode org))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -150,11 +148,6 @@
 (define-key org-mode-map [(control tab)] nil)
 (define-key org-mode-map [(control shift tab)] nil)
 (add-hook 'org-mode-hook (lambda () (visual-line-mode t)))
-
-(setq-default fci-rule-column my_console_width)
-(define-globalized-minor-mode global-fci-mode
-  fci-mode (lambda () (fci-mode 1)))
-(global-fci-mode 1)
 
 (global-set-key (kbd "M-x") #'helm-M-x)
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
