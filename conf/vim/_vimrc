@@ -12,3 +12,5 @@ syn on
 set gfn=±¼¸²Ã¼:h12:cHANGEUL
 set cursorline
 set nu
+set clipboard=unnamed
+set incsearch
