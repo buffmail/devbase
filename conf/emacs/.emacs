@@ -1,8 +1,21 @@
-(require 'package)
+﻿(require 'package)
 
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
+(let ((req-package-list '(python-mode helm fill-column-indicator tabbar-ruler
+                                      tabbar jade-mode sws-mode multi-web-mode
+                                      web-mode org)))
+  (mapcar
+   (lambda (x)
+     (if (not (package-installed-p x))
+         (progn
+           (message "Installing package %s" x)
+           (package-install x)
+           )
+       )
+     )
+   req-package-list))
 
 (require 'evil)
 (require 'fill-column-indicator)
@@ -70,22 +83,14 @@
  '(org-agenda-files nil)
  '(package-selected-packages
    (quote
-    (evil helm fill-column-indicator tabbar-ruler tabbar jade-mode sws-mode multi-web-mode web-mode org))))
+    (helm fill-column-indicator tabbar-ruler tabbar jade-mode sws-mode multi-web-mode web-mode org)))
+ '(paradox-github-token t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-(when (not (display-graphic-p))
-  (global-hl-line-mode)
-  (set-face-background hl-line-face "gray13")
-  (require 'color-theme)
-  (eval-after-load "color-theme"
-    '(progn
-       (color-theme-initialize)
-       (color-theme-charcoal-black))))
 
 (defun my-current-directory (text)
   (if (string-match
