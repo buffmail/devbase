@@ -163,3 +163,5 @@
 (let ((dife (expand-file-name "~/.emacs.d/=.dife/DIFE.exe")))
   (if (file-exists-p dife)
       (w32-shell-execute nil dife)))
+
+(desktop-save-mode 1)
