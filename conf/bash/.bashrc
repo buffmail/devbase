@@ -16,6 +16,7 @@ alias ls='ls --color'
 alias pym='python -m'
 export PATH=$PATH:/mingw64/bin/:/d/work/Scripts/
 export TERM=xterm
+export LANG=en_US.UTF-8
 
 if [ ! -z "$my_workdir" ] ; then
     cd $my_workdir
