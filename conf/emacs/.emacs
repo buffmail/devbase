@@ -3,18 +3,13 @@
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
-(let ((req-package-list '(python-mode helm fill-column-indicator tabbar-ruler
-                                      tabbar jade-mode sws-mode multi-web-mode
+(let ((req-package-list '(python-mode helm fill-column-indicator names
+                                      tabbar-ruler tabbar jade-mode
+                                      sws-mode multi-web-mode
                                       web-mode org)))
-  (mapcar
-   (lambda (x)
-     (if (not (package-installed-p x))
-         (progn
-           (message "Installing package %s" x)
-           (package-install x)
-           )
-       )
-     )
+  (mapcar (lambda (x) (unless (package-installed-p x)
+              (message "Installing package %s" x)
+              (package-install x)))
    req-package-list))
 
 (require 'evil)
@@ -33,7 +28,7 @@
     (setq my_bash "C:/msys64/usr/bin/f_bash.exe"))
    ((string= pcname "XL0347-P1")
     (setq my_devbase "d:/devbase/")
-    (setq my_bash "c:/msys64/usr/bin/f_bash.exe")
+    (setq my_bash (concat user-emacs-directory "fakecygpty/f_bash.exe"))
     (setq my_workdir "e:/work/"))
    ((string= pcname "BUFFMAIL-PC")
     (setq my_devbase "d:/devbase/")
@@ -83,7 +78,7 @@
  '(org-agenda-files nil)
  '(package-selected-packages
    (quote
-    (helm fill-column-indicator tabbar-ruler tabbar jade-mode sws-mode multi-web-mode web-mode org)))
+    (names helm fill-column-indicator tabbar-ruler tabbar jade-mode sws-mode multi-web-mode web-mode org)))
  '(paradox-github-token t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -95,12 +90,9 @@
 (defun my-current-directory (text)
   (if (string-match
        "\n\\[34m/\\([[:alpha:]*]\\)\\(.*\\)\\[31m.*\n\$ " text)
-      (let
-          ((windir
-            (concat
-             (substring text (match-beginning 1)(match-end 1))
-             ":"
-             (substring text (match-beginning 2)(match-end 2)))))
+      (let ((windir (concat (substring text (match-beginning 1)(match-end 1))
+                            ":"
+                            (substring text (match-beginning 2)(match-end 2)))))
         (cd windir))))
 
 (if (equal system-type 'windows-nt)
@@ -122,23 +114,19 @@
 
 (split-window)
 
-(setenv "PATH"
-        (concat
-         "C:/Program Files/Java/jdk1.8.0_45/bin;"
-         "c:/MSys64/usr/bin;"
-         "C:/Program Files (x86)/MSBuild/14.0/Bin;"
-         "C:/Program Files/Git/cmd/;"
-         (getenv "PATH")))
+(setenv "PATH" (concat "C:/Program Files/Java/jdk1.8.0_45/bin;"
+                       "c:/MSys64/usr/bin;"
+                       "C:/Program Files (x86)/MSBuild/14.0/Bin;"
+                       "C:/Program Files/Git/cmd/;"
+                       (getenv "PATH")))
 
 (setenv "my_workdir" my_workdir)
 
-(add-to-list 'auto-mode-alist
-             '("\\.pug\\'" . jade-mode))
+(add-to-list 'auto-mode-alist '("\\.pug\\'" . jade-mode))
 
 (prefer-coding-system 'utf-8)
 
-(setq whitespace-style
-      (quote (face spaces tabs trailing tab-mark space-mark)))
+(setq whitespace-style '(face spaces tabs trailing tab-mark space-mark))
 (setq-default indent-tabs-mode nil)
 
 (setq tabbar-ruler-global-tabbar t)
@@ -166,7 +154,7 @@
 (global-set-key [(kana)] 'toggle-input-method)
 (global-set-key [(kanji)] 'hangul-to-hanja-conversion)
 
-(let ((dife (expand-file-name "~/.emacs.d/=.dife/DIFE.exe")))
+(let ((dife (expand-file-name (concat user-emacs-directory "dife/DIFE.exe"))))
   (if (file-exists-p dife)
       (w32-shell-execute nil dife)))
 
