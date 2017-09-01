@@ -19,16 +19,20 @@
 (require 'server)
 (require 'whitespace)
 
-(let ((pcname (getenv "COMPUTERNAME")))
+(let ((pcname (getenv "COMPUTERNAME"))
+      (f_bash_path (concat user-emacs-directory "fakecygpty/f_bash.exe"))
+      (msys_bash_path "C:/msys64/usr/bin/bash.exe")
+      (git_bash_path "C:/Program Files/Git/bin/bash.exe"))
+  (setq my_bash
+        (cond
+         ((file-exists-p f_bash_path) f_bash_path)
+         ((file-exists-p msys_bash_path) msys_bash_path)
+         ((file-exists-p git_bash_path) git_bash_path)))
   (setq my_devbase "c:/devbase/")
-  (setq my_bash "C:/msys64/usr/bin/bash.exe")
   (setq my_workdir "c:/work/")
   (cond
-   ((string= pcname "BUFFNOTE")
-    (setq my_bash "C:/msys64/usr/bin/f_bash.exe"))
    ((string= pcname "XL0347-P1")
     (setq my_devbase "d:/devbase/")
-    (setq my_bash (concat user-emacs-directory "fakecygpty/f_bash.exe"))
     (setq my_workdir "e:/work/"))
    ((string= pcname "BUFFMAIL-PC")
     (setq my_devbase "d:/devbase/")
@@ -38,16 +42,12 @@
 
 (require 'org-fold)
 
-(add-hook 'emacs-lisp-mode-hook
-          (lambda () (show-paren-mode t)))
+(add-hook 'emacs-lisp-mode-hook (lambda () (show-paren-mode t)))
 
-(add-hook 'after-init-hook
-          (lambda ()
-            (unless (server-running-p)
-              (server-start))))
+(add-hook 'after-init-hook (lambda () (unless (server-running-p)
+                                        (server-start))))
 
-(add-hook 'prog-mode-hook
-          'whitespace-mode)
+(add-hook 'prog-mode-hook 'whitespace-mode)
 
 (remove-hook 'kill-buffer-query-functions
              'server-kill-buffer-query-function)
