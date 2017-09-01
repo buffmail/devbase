@@ -40,8 +40,6 @@
 
 (add-to-list 'load-path (concat my_devbase "conf/emacs/"))
 
-(require 'org-fold)
-
 (add-hook 'emacs-lisp-mode-hook (lambda () (show-paren-mode t)))
 
 (add-hook 'after-init-hook (lambda () (unless (server-running-p)
