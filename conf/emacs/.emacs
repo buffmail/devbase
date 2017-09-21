@@ -17,6 +17,7 @@
 (require 'helm)
 (require 'org)
 (require 'server)
+(require 'tramp)
 (require 'whitespace)
 
 (let ((pcname (getenv "COMPUTERNAME"))
@@ -116,11 +117,13 @@
                        "c:/MSys64/usr/bin;"
                        "C:/Program Files (x86)/MSBuild/14.0/Bin;"
                        "C:/Program Files/Git/cmd/;"
+                       "C:/Program Files/Git LFS/;"
                        (getenv "PATH")))
 
 (setenv "my_workdir" my_workdir)
 
 (add-to-list 'auto-mode-alist '("\\.pug\\'" . jade-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 
 (prefer-coding-system 'utf-8)
 
@@ -128,6 +131,7 @@
 (setq-default indent-tabs-mode nil)
 
 (setq tabbar-ruler-global-tabbar t)
+(setq tabbar-ruler-style 'firefox)
 (tabbar-ruler-move)
 (tabbar-ruler-group-by-projectile-project)
 (global-set-key [(control tab)] 'tabbar-forward-tab)
@@ -155,5 +159,7 @@
 (let ((dife (expand-file-name (concat user-emacs-directory "dife/DIFE.exe"))))
   (if (file-exists-p dife)
       (w32-shell-execute nil dife)))
+
+(setq tramp-default-method "plink")
 
 (desktop-save-mode 1)
