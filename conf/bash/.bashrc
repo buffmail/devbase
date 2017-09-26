@@ -18,6 +18,8 @@ export PATH=$PATH:/mingw64/bin/:/d/work/Scripts/
 export TERM=xterm
 export LANG=en_US.UTF-8
 
+[[ -s "$USERPROFILE/.pik/.pikrc" ]] && source "$USERPROFILE/.pik/.pikrc"
+
 if [ ! -z "$my_workdir" ] ; then
     cd $my_workdir
 fi
